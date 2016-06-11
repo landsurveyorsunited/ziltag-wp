@@ -10,6 +10,7 @@ Author URI: http://ziltag.com/
 
 add_action( 'admin_menu', 'ziltag_add_admin_menu' );
 add_action( 'admin_init', 'ziltag_settings_init' );
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links' );
 
 
 function ziltag_add_admin_menu(  ) {
@@ -69,6 +70,13 @@ function ziltag_options_page(  ) {
 	</form>
 	<?php
 
+}
+
+function add_action_links( $links ){
+	$mylinks = array(
+		'<a href="' . admin_url('options-general.php?page=ziltag-plugin' ) . '">Settings</a>',
+	);
+	return array_merge($mylinks, $links);
 }
 
 ?>
