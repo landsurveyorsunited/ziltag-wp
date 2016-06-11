@@ -24,14 +24,14 @@ function ziltag_settings_init(  ) {
 
 	add_settings_section(
 		'ziltag_pluginPage_section',
-		'Your section description',
+		'Ziltag Plugin Setting',
 		'ziltag_settings_section_callback',
 		'pluginPage'
 	);
 
 	add_settings_field(
 		'ziltag_text_field_0',
-		'Ziltag plugin token',
+		'plugin token',
 		'ziltag_text_field_0_render',
 		'pluginPage',
 		'ziltag_pluginPage_section'
@@ -43,14 +43,22 @@ function ziltag_text_field_0_render(  ) {
 
 	$options = get_option( 'ziltag_settings' );
 	?>
-	<input type='text' name='ziltag_settings[ziltag_text_field_0]' value='<?php echo $options['ziltag_text_field_0']; ?>'>
+	<input maxlength='6' minlength='6' size='6' type='text' name='ziltag_settings[ziltag_text_field_0]' value='<?php echo $options['ziltag_text_field_0']; ?>'>
 	<?php
 
 }
 
 
-function ziltag_settings_section_callback(  ) {
-	echo 'This section description';
+function ziltag_settings_section_callback() {
+	?>
+	<p>
+		You can check your plugin token in <a href="https://ziltag.com/dashboard/account">Ziltag Dashboard</a>,
+		it's 6 letter long, composed of digits and letters.
+	</p>
+	<p>For example, if this is your plugin script:</p>
+	<code>&lt;script src=&quot;https://ziltag.com/plugin.js&quot; data-ziltag=&quot;596be5&quot;&gt;&lt;/script&gt;</code>
+	<p>Then your token will be <code>596be5</code>.</p>
+	<?php
 }
 
 
@@ -58,9 +66,6 @@ function ziltag_options_page(  ) {
 
 	?>
 	<form action='options.php' method='post'>
-
-		<h2>Ziltag Plugin Setting</h2>
-
 		<?php
 		settings_fields('pluginPage');
 		do_settings_sections('pluginPage');
