@@ -2,7 +2,7 @@
 /*
 Plugin Name: Ziltag Plugin
 Plugin URI: http://wordpress.org/plugins/ziltag-plugin/
-Description: Ziltag plugin
+Description: Ziltag is a visual tagging plugin that helps you discover and discuss wonderful things. By directly connecting users to everything on images, we make information more accessible and shareable.
 Author: Ziltag
 Version: 1.0
 Author URI: http://ziltag.com/
